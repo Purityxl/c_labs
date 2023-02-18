@@ -1,29 +1,32 @@
 #include <stdio.h>
+
 #include <ctype.h>
+
 #include <termios.h>
+
 #include <unistd.h>
 
 char mygetch() {
-struct termios oldt, newt;
-char c;
-tcgetattr(STDIN_FILENO, &oldt);
-newt = oldt;
-newt.c_lflag &= ~(ICANON | ECHO);
-tcsetattr(STDIN_FILENO, TCSANOW, &newt);
-c = getchar();
-tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
-return c;
+  struct termios oldt, newt;
+  char c;
+  tcgetattr(STDIN_FILENO, & oldt);
+  newt = oldt;
+  newt.c_lflag &= ~(ICANON | ECHO);
+  tcsetattr(STDIN_FILENO, TCSANOW, & newt);
+  c = getchar();
+  tcsetattr(STDIN_FILENO, TCSANOW, & oldt);
+  return c;
 }
 
 int main() {
-int digit_count = 0;
-char c;
-printf("Введите символы (нажмите F11 для выхода):\n");
-while ((c = mygetch()) != 0 && c != 11) {
-if (isdigit(c)) {
-digit_count++;
-}
-}
-printf("Количество цифр в введенной последовательности: %d\n", digit_count);
-return 0;
+  int digit_count = 0;
+  char c;
+  printf("Введите символы (нажмите F11 для выхода):\n");
+  while ((c = mygetch()) != 0 && c != 11) {
+    if (isdigit(c)) {
+      digit_count++;
+    }
+  }
+  printf("Количество цифр в введенной последовательности: %d\n", digit_count);
+  return 0;
 }
