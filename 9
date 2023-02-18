@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+#include <string.h>
+
+void remove_nth_char(char * str, int n) {
+  int len = strlen(str);
+  int count = 0;
+  for (int i = 0; i < len; i++) {
+    if (str[i] == ' ') { // Найдено новое слово
+      count = 0;
+    } else {
+      if (count == n - 1) {
+        // удаление символа
+        memmove( & str[i], & str[i + 1], len - i);
+        len--;
+        i--;
+      }
+      count = (count + 1) % n; // счетчик символов
+    }
+  }
+}
+
+int main() {
+  char str[1000];
+  int n;
+  printf("Введите строку: ");
+  fgets(str, sizeof(str), stdin);
+  printf("Введите номер символа для удаления: ");
+  scanf("%d", & n);
+
+  remove_nth_char(str, n);
+  printf("Результат: %s", str);
+  return 0;
+}
