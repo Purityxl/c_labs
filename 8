@@ -1,32 +1,61 @@
-#include <stdio.h>
-
 #include <ctype.h>
-
+#include <stdio.h>
 #include <termios.h>
-
 #include <unistd.h>
+#include <wctype.h>
+#include <stdbool.h>
 
-char mygetch() {
-  struct termios oldt, newt;
-  char c;
-  tcgetattr(STDIN_FILENO, & oldt);
-  newt = oldt;
-  newt.c_lflag &= ~(ICANON | ECHO);
-  tcsetattr(STDIN_FILENO, TCSANOW, & newt);
-  c = getchar();
-  tcsetattr(STDIN_FILENO, TCSANOW, & oldt);
-  return c;
+int mygetch()
+{
+    struct termios oldt, newt;
+    int c;
+    tcgetattr(STDIN_FILENO, &oldt);
+    newt = oldt;
+    newt.c_lflag &= ~(ICANON | ECHO);
+    tcsetattr(STDIN_FILENO, TCSANOW, &newt);
+    c = getchar();
+    tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
+    return c;
 }
 
-int main() {
-  int digit_count = 0;
-  char c;
-  printf("Введите символы (нажмите F11 для выхода):\n");
-  while ((c = mygetch()) != 0 && c != 11) {
-    if (isdigit(c)) {
-      digit_count++;
-    }
-  }
-  printf("Количество цифр в введенной последовательности: %d\n", digit_count);
-  return 0;
+int main()
+{
+    int c;
+    int count=0;
+    
+
+   for(;;) 
+   {
+        c = mygetch();
+        if (isdigit(c))
+            count++;
+        if (iscntrl(c))
+        {
+            if(c==27)
+            {
+                mygetch();
+                c=mygetch();
+                if (isalpha(c) && c == 'O')  
+                    mygetch();
+                    else
+                    {
+                        if(c == '2' )
+                        {
+                            c = mygetch();
+                            if(c == '3')
+                                break;
+                            if (isdigit(c))
+                                mygetch();    
+                        }
+                        else
+                            if(isdigit(c))
+                                while(c!='~')
+                                    c=mygetch();               
+                    }   
+            }
+        }
+        else 
+            printf("%c",c);        
+    }    
+    printf("введено цифр %d\n",count);
 }
