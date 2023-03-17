@@ -23,6 +23,12 @@ void printSentenceWithDeletedNSymbols(char str[])
     char delim[] = ", \n";
     char *p = strtok(str, delim);
     
+    if (!p)
+    {
+        printf("Пустая строка!\n");
+        return;
+    }
+    
     printWordWithDeletedIndex(0,p);
     int wordIndex = 1; 
     while ((p = strtok(NULL, delim)))
