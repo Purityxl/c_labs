@@ -1,0 +1,61 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/shagiev_aa/Рабочий стол/lab1/NamedPipeServer/NamedPipeServer.csproj": {}
+  },
+  "projects": {
+    "/home/shagiev_aa/Рабочий стол/lab1/NamedPipeServer/NamedPipeServer.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/shagiev_aa/Рабочий стол/lab1/NamedPipeServer/NamedPipeServer.csproj",
+        "projectName": "NamedPipeServer",
+        "projectPath": "/home/shagiev_aa/Рабочий стол/lab1/NamedPipeServer/NamedPipeServer.csproj",
+        "packagesPath": "/home/shagiev_aa/.nuget/packages/",
+        "outputPath": "/home/shagiev_aa/Рабочий стол/lab1/NamedPipeServer/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/shagiev_aa/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.400/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
